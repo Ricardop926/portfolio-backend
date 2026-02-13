@@ -12,13 +12,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    /*'https://tu-dominio.com' // opcional*/
-  ],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  credentials: true
 }));
 app.options('*', cors());
 app.use(express.json());
